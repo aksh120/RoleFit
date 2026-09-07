@@ -42,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ poolCount = 0 }) => {
 
           {/* Model Tag */}
           <div className="hidden md:flex items-center px-2.5 py-1 rounded-md bg-zinc-900/80 border border-white/[0.08] text-zinc-400">
-            <span>llama-3.3-70b</span>
+            <span>ai-ranked</span>
           </div>
 
           {/* GitHub Source */}

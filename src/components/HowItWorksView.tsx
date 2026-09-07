@@ -73,10 +73,10 @@ export const HowItWorksView: React.FC<HowItWorksViewProps> = ({ onStartMatching 
     {
       num: '05',
       icon: Sparkles,
-      title: 'LLM Reasoning & Tailored Suggestions',
-      badge: 'Groq Llama 3.3 70B',
+      title: 'AI Reasoning & Tailored Suggestions',
+      badge: 'Synthesis Engine',
       description:
-        'Top-ranked matches are synthesized by Groq Llama 3.3 70B. RoleFit diagnoses specific requirement gaps and generates concrete, actionable bullet points you can copy directly into your resume to tailor your application.',
+        'Top-ranked matches are synthesized by RoleFit\'s deep reasoning engine. RoleFit diagnoses specific requirement gaps and generates concrete, actionable bullet points you can copy directly into your resume to tailor your application.',
       points: [
         'Analytical breakdown: "Why you match" based on proven evidence',
         'Diagnoses up to 3 concrete skill gaps per target role',
@@ -96,7 +96,7 @@ export const HowItWorksView: React.FC<HowItWorksViewProps> = ({ onStartMatching 
           How RoleFit Works
         </h1>
         <p className="text-sm text-gray-500 dark:text-slate-400 mt-2 max-w-2xl leading-relaxed">
-          From document ingestion to vector cosine similarity and automated LLM skill-gap diagnosis. Here is what happens under the hood.
+          From document ingestion to vector cosine similarity and automated AI skill-gap diagnosis. Here is what happens under the hood.
         </p>
       </div>
 

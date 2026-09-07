@@ -33,7 +33,6 @@ export default function Page() {
   const [experienceLevel, setExperienceLevel] = useState<string>('all');
   const [location, setLocation] = useState<string>('');
   const [topN, setTopN] = useState<number>(8);
-  const [apiKey, setApiKey] = useState<string>('');
 
   // Processing & results state
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -358,9 +357,7 @@ export default function Page() {
       {/* 5. SETTINGS VIEW */}
       {currentTab === 'settings' && (
         <SettingsView
-          apiKey={apiKey}
           defaultTopN={topN}
-          onApiKeyChange={setApiKey}
           onDefaultTopNChange={setTopN}
         />
       )}

@@ -9,14 +9,14 @@ TECHNICAL SKILLS
 - Frameworks & Libraries: React, Next.js, FastAPI, Node.js, Express, PyTorch, LangChain, Sentence-Transformers
 - Databases & Vector Stores: PostgreSQL, MongoDB, Redis, Pinecone, ChromaDB
 - Cloud & DevOps: Docker, Kubernetes, AWS (S3, Lambda, ECS), GitHub Actions CI/CD, Vercel
-- Machine Learning & GenAI: LLM fine-tuning, RAG pipelines, OpenAI API, Groq, Hugging Face, Cosine Similarity, Embeddings
+- Machine Learning & GenAI: LLM fine-tuning, RAG pipelines, Hugging Face, Vector Search, Cosine Similarity, Embeddings
 
 PROFESSIONAL EXPERIENCE
 
 AI Software Engineer | NeuralWave Technologies
 June 2024 – Present | San Francisco, CA
 - Architected and deployed an enterprise Retrieval-Augmented Generation (RAG) platform using Next.js, FastAPI, and Pinecone, serving 15,000+ daily active users with sub-300ms query latency.
-- Integrated Groq and Llama 3.3 models for automated document synthesis, cutting analyst review time by 42%.
+- Integrated high-performance LLM models for automated document synthesis, cutting analyst review time by 42%.
 - Designed token-efficient semantic chunking algorithms and cosine similarity rerankers that boosted retrieval accuracy by 28%.
 - Established automated CI/CD evaluation pipelines using Pytest and GitHub Actions, ensuring 95%+ prompt consistency.
 
@@ -36,7 +36,7 @@ August 2021 – December 2022 | Austin, TX
 PROJECTS
 
 RoleFit — AI Job Match & Resume Tailor (Open Source)
-- Built a modern web app aggregating live jobs from public APIs and scoring candidate fit using vector embeddings and Llama 3.3 70B reasoning.
+- Built a modern web app aggregating live jobs from public APIs and scoring candidate fit using vector embeddings and automated LLM reasoning.
 - Implemented real-time keyword filters, skill-gap diagnoses, and 1-click tailored resume edit suggestions.
 
 VectorDoc — Multi-Modal Semantic Search Engine
