@@ -19,21 +19,21 @@ export const SavedJobsView: React.FC<SavedJobsViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="pb-4 border-b border-gray-100">
-        <h1 className="text-2xl font-bold text-gray-950">Saved Jobs</h1>
-        <p className="text-sm text-gray-500 mt-0.5">
+      <div className="pb-4 border-b border-gray-100 dark:border-slate-800">
+        <h1 className="text-2xl font-bold text-gray-950 dark:text-white">Saved Jobs</h1>
+        <p className="text-sm text-gray-500 dark:text-slate-400 mt-0.5">
           Keep track of opportunities you want to revisit.
         </p>
       </div>
 
       {savedJobs.length === 0 ? (
         /* Empty State */
-        <div className="bg-white rounded-xl border border-gray-200 p-16 text-center max-w-lg mx-auto my-12">
-          <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-3 text-gray-400">
+        <div className="bg-white dark:bg-[#0C121E] rounded-xl border border-gray-200 dark:border-slate-800 p-16 text-center max-w-lg mx-auto my-12 transition-colors duration-150">
+          <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-slate-800/80 flex items-center justify-center mx-auto mb-3 text-gray-400 dark:text-slate-500">
             <Bookmark className="h-6 w-6 stroke-[1.5]" />
           </div>
-          <h3 className="text-base font-bold text-gray-900">No saved jobs yet</h3>
-          <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+          <h3 className="text-base font-bold text-gray-900 dark:text-white">No saved jobs yet</h3>
+          <p className="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-relaxed">
             Bookmark opportunities from your matches to keep track of them here.
           </p>
         </div>

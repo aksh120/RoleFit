@@ -20,7 +20,7 @@ export default function Page() {
 
   // Resume state (default to sample candidate matching the reference image)
   const [resumeText, setResumeText] = useState<string>(SAMPLE_RESUME_TEXT);
-  const [resumeFilename, setResumeFilename] = useState<string>('alex-chen-ai-engineer.pdf');
+  const [resumeFilename, setResumeFilename] = useState<string>('akshat-apoorv-resume.pdf');
   const [resumeCharCount, setResumeCharCount] = useState<number>(3194);
   const [isResumeLoading, setIsResumeLoading] = useState<boolean>(false);
 
@@ -206,13 +206,13 @@ export default function Page() {
         <div className="space-y-7">
           {/* Top Headline Section */}
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-wider text-gray-500 mb-2">
+            <div className="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
               UPLOAD &nbsp;→&nbsp; MATCH &nbsp;→&nbsp; IMPROVE
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-950 tracking-tight leading-tight">
-              Find jobs that <span className="text-[#2563EB]">actually</span> fit you.
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-950 dark:text-white tracking-tight leading-tight">
+              Find jobs that <span className="text-[#2563EB] dark:text-blue-400">actually</span> fit you.
             </h1>
-            <p className="text-sm text-gray-500 mt-2 max-w-2xl leading-relaxed">
+            <p className="text-sm text-gray-500 dark:text-slate-400 mt-2 max-w-2xl leading-relaxed">
               Upload your resume, get matched with live job openings, and receive AI-powered insights to help you stand out.
             </p>
           </div>
@@ -257,16 +257,16 @@ export default function Page() {
               {/* Section Header */}
               <div className="flex items-center justify-between pb-1">
                 <div>
-                  <h2 className="text-[18px] font-bold text-gray-950">
+                  <h2 className="text-[18px] font-bold text-gray-950 dark:text-white">
                     Top Job Matches
                   </h2>
-                  <p className="text-[12px] text-gray-500">
+                  <p className="text-[12px] text-gray-500 dark:text-slate-400">
                     Jobs ranked by semantic similarity to your resume
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-[12px] text-gray-500">
+                  <span className="text-[12px] text-gray-500 dark:text-slate-400">
                     {rankedJobs.length} results
                   </span>
 
@@ -275,11 +275,11 @@ export default function Page() {
                     onClick={() =>
                       setSortOrder(sortOrder === 'best' ? 'score-desc' : 'best')
                     }
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 bg-white text-[12px] font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-2xs"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-[#0C121E] text-[12px] font-medium text-gray-700 dark:text-slate-200 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors shadow-2xs"
                   >
-                    <ArrowUpDown className="h-3.5 w-3.5 text-gray-400" />
+                    <ArrowUpDown className="h-3.5 w-3.5 text-gray-400 dark:text-slate-500" />
                     <span>Sorted by best match</span>
-                    <ChevronDown className="h-3.5 w-3.5 text-gray-400 ml-0.5" />
+                    <ChevronDown className="h-3.5 w-3.5 text-gray-400 dark:text-slate-500 ml-0.5" />
                   </button>
                 </div>
               </div>
@@ -302,7 +302,7 @@ export default function Page() {
             {/* Right 30%: Contextual Information Panels */}
             <div className="lg:col-span-4">
               <RightSidebar
-                filename={resumeFilename || 'alex-chen-ai-engineer.pdf'}
+                filename={resumeFilename || 'akshat-apoorv-resume.pdf'}
                 charCount={resumeCharCount || 3194}
                 wordCount={resumeText ? resumeText.trim().split(/\s+/).length : 532}
                 onViewResume={() => {
