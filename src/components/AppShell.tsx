@@ -3,6 +3,7 @@
 import React from 'react';
 import { Home, FileText, Search, Bookmark, Settings, Sun, Moon } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+import { UserProfileMenu } from './UserProfileMenu';
 
 export type NavTab = 'home' | 'resumes' | 'search' | 'saved' | 'settings' | 'how-it-works' | 'about';
 
@@ -137,20 +138,8 @@ export const AppShell: React.FC<AppShellProps> = ({
             )}
           </button>
 
-          {/* User Profile Container */}
-          <div className="flex items-center gap-2.5 pl-1 select-none">
-            <div className="h-8 w-8 rounded-full bg-[#2563EB] dark:bg-blue-600 text-white flex items-center justify-center text-xs font-semibold shadow-xs">
-              AA
-            </div>
-            <div className="hidden sm:block text-left leading-tight">
-              <span className="block text-xs font-semibold text-gray-900 dark:text-slate-200">
-                Akshat Apoorv
-              </span>
-              <span className="block text-[11px] text-gray-400 dark:text-slate-500">
-                Candidate
-              </span>
-            </div>
-          </div>
+          {/* User Profile Container & Dropdown */}
+          <UserProfileMenu onTabChange={onTabChange} />
         </header>
 
         {/* Dynamic Page Content */}
