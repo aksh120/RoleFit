@@ -11,6 +11,8 @@ import MyResumesView from '@/components/MyResumesView';
 import JobSearchView from '@/components/JobSearchView';
 import SavedJobsView from '@/components/SavedJobsView';
 import SettingsView from '@/components/SettingsView';
+import HowItWorksView from '@/components/HowItWorksView';
+import AboutView from '@/components/AboutView';
 import { SAMPLE_RESUME_TEXT } from '@/lib/sample-data';
 import { REAL_TECH_JOBS, ensureRealCompanies } from '@/lib/real-jobs';
 import type { EnrichedJob, Job, AIInsights } from '@/lib/types';
@@ -361,6 +363,16 @@ export default function Page() {
           onApiKeyChange={setApiKey}
           onDefaultTopNChange={setTopN}
         />
+      )}
+
+      {/* 6. HOW IT WORKS VIEW */}
+      {currentTab === 'how-it-works' && (
+        <HowItWorksView onStartMatching={() => setCurrentTab('home')} />
+      )}
+
+      {/* 7. ABOUT VIEW */}
+      {currentTab === 'about' && (
+        <AboutView onStartMatching={() => setCurrentTab('home')} />
       )}
 
       {/* Dedicated Job Detail View Modal */}

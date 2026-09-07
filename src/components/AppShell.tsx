@@ -4,7 +4,7 @@ import React from 'react';
 import { Home, FileText, Search, Bookmark, Settings, Sun, Moon } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
-export type NavTab = 'home' | 'resumes' | 'search' | 'saved' | 'settings';
+export type NavTab = 'home' | 'resumes' | 'search' | 'saved' | 'settings' | 'how-it-works' | 'about';
 
 interface AppShellProps {
   currentTab: NavTab;
@@ -36,8 +36,15 @@ export const AppShell: React.FC<AppShellProps> = ({
         <div>
           {/* Top Brand Logo */}
           <div className="flex items-center gap-2 px-2 mb-6">
-            <span className="text-[19px] font-bold tracking-tight text-gray-950 dark:text-white font-sans">
+            <button
+              type="button"
+              onClick={() => onTabChange('home')}
+              className="text-[19px] font-bold tracking-tight text-gray-950 dark:text-white font-sans hover:opacity-85 transition-opacity"
+            >
               RoleFit
+            </button>
+            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-slate-700">
+              v1.0
             </span>
           </div>
 
@@ -90,14 +97,24 @@ export const AppShell: React.FC<AppShellProps> = ({
         {/* Top Minimal Navigation Bar */}
         <header className="h-14 border-b border-gray-100 dark:border-slate-800/80 px-6 sm:px-10 flex items-center justify-end gap-4 text-[13px] text-gray-600 dark:text-slate-300">
           <button
-            onClick={() => onTabChange('settings')}
-            className="hover:text-gray-900 dark:hover:text-white transition-colors"
+            type="button"
+            onClick={() => onTabChange('how-it-works')}
+            className={`transition-colors cursor-pointer ${
+              currentTab === 'how-it-works'
+                ? 'text-[#2563EB] dark:text-blue-400 font-semibold'
+                : 'hover:text-gray-900 dark:hover:text-white'
+            }`}
           >
             How it works
           </button>
           <button
-            onClick={() => onTabChange('settings')}
-            className="hover:text-gray-900 dark:hover:text-white transition-colors"
+            type="button"
+            onClick={() => onTabChange('about')}
+            className={`transition-colors cursor-pointer ${
+              currentTab === 'about'
+                ? 'text-[#2563EB] dark:text-blue-400 font-semibold'
+                : 'hover:text-gray-900 dark:hover:text-white'
+            }`}
           >
             About
           </button>
