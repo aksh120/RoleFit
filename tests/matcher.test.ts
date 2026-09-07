@@ -38,7 +38,7 @@ describe('Matcher & Vector Similarity Suite', () => {
 
   it('ranks machine learning role above unrelated roles for ML resume', () => {
     const mlResume = `
-      Alex Chen — Machine Learning Engineer
+      Akshat Apoorv — Machine Learning Engineer
       Expert in Python, PyTorch, Deep Learning, and NLP models.
       Built large-scale neural network architectures and data pipelines.
     `;

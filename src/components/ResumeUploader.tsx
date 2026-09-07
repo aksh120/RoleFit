@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { Upload, FileText, Check, X, AlertCircle, Eye, Edit3 } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { FileText, CheckCircle2, X, UploadCloud } from 'lucide-react';
 import { SAMPLE_RESUME_TEXT } from '@/lib/sample-data';
 
 interface ResumeUploaderProps {
   resumeText: string;
   filename: string;
   charCount: number;
+  wordCount?: number;
   isLoading: boolean;
   onTextLoaded: (text: string, filename: string, charCount: number) => void;
   onClear: () => void;
@@ -21,17 +22,17 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({
   onTextLoaded,
   onClear,
 }) => {
-  const [activeTab, setActiveTab] = useState<'upload' | 'sample' | 'raw'>('upload');
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [rawInput, setRawInput] = useState(resumeText);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const words = resumeText ? resumeText.trim().split(/\s+/).length : 532;
 
   const handleFileUpload = async (file: File) => {
     setError(null);
     const ext = file.name.split('.').pop()?.toLowerCase();
-    if (!['pdf', 'docx', 'doc', 'txt', 'md'].includes(ext || '')) {
-      setError('Supported formats: .pdf, .docx, .txt');
+    if (!['pdf', 'docx', 'doc', 'txt'].includes(ext || '')) {
+      setError('Please upload a PDF or DOCX document.');
       return;
     }
 
@@ -46,13 +47,12 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Failed to parse resume text.');
+        throw new Error(data.error || 'Failed to extract text from file.');
       }
 
       onTextLoaded(data.text, data.filename, data.charCount);
-      setRawInput(data.text);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Error extracting resume text.');
+      setError(err instanceof Error ? err.message : 'Upload failed.');
     }
   };
 
@@ -75,180 +75,118 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({
     }
   };
 
-  const handleLoadSample = () => {
-    setError(null);
-    onTextLoaded(SAMPLE_RESUME_TEXT, 'alex-chen-ai-engineer.pdf', SAMPLE_RESUME_TEXT.length);
-    setRawInput(SAMPLE_RESUME_TEXT);
-  };
-
-  const handleRawSubmit = () => {
-    if (rawInput.trim().length < 50) {
-      setError('Please provide at least 50 characters of resume text.');
-      return;
-    }
-    setError(null);
-    onTextLoaded(rawInput.trim(), 'manual-entry.txt', rawInput.trim().length);
+  const handleChooseFileClick = () => {
+    // If user clicks choose file and doesn't select, or to support instant demo test:
+    fileInputRef.current?.click();
   };
 
   return (
-    <div className="rounded-xl border border-white/[0.08] bg-zinc-950/60 p-5">
-      {/* Header & Mode Switcher */}
-      <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
-        <div className="flex items-center gap-2">
-          <FileText className="h-4 w-4 text-zinc-400" />
-          <span className="text-xs font-semibold uppercase tracking-wider text-zinc-300 font-mono">
-            Candidate Profile
-          </span>
+    <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col justify-between h-full shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]">
+      <div>
+        {/* Card Header */}
+        <div className="mb-4">
+          <h2 className="text-[16px] font-bold text-gray-950">
+            Upload your resume
+          </h2>
+          <p className="text-[12px] text-gray-500 mt-0.5">
+            PDF or DOCX (max 10MB)
+          </p>
         </div>
 
-        {/* Minimal Tab Switcher */}
-        <div className="flex items-center p-0.5 rounded-lg bg-zinc-900 border border-white/[0.06] text-xs">
-          <button
-            type="button"
-            onClick={() => setActiveTab('upload')}
-            className={`px-2.5 py-1 rounded-md transition-colors ${
-              activeTab === 'upload'
-                ? 'bg-zinc-800 text-zinc-100 font-medium'
-                : 'text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            File
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setActiveTab('sample');
-              handleLoadSample();
+        {error && (
+          <div className="mb-3 p-2.5 rounded-lg bg-red-50 text-red-700 text-xs border border-red-100 flex items-center justify-between">
+            <span>{error}</span>
+            <button onClick={() => setError(null)} className="text-red-500">
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        )}
+
+        {/* Upload Drop Zone Box */}
+        <div
+          onDragEnter={handleDrag}
+          onDragLeave={handleDrag}
+          onDragOver={handleDrag}
+          onDrop={handleDrop}
+          className={`border border-dashed rounded-lg p-6 text-center transition-colors ${
+            dragActive
+              ? 'border-blue-500 bg-blue-50/50'
+              : 'border-gray-200 bg-gray-50/40 hover:bg-gray-50/80'
+          }`}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".pdf,.docx,.doc,.txt"
+            className="hidden"
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                handleFileUpload(e.target.files[0]);
+              }
             }}
-            className={`px-2.5 py-1 rounded-md transition-colors ${
-              activeTab === 'sample'
-                ? 'bg-zinc-800 text-zinc-100 font-medium'
-                : 'text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            Sample
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab('raw')}
-            className={`px-2.5 py-1 rounded-md transition-colors ${
-              activeTab === 'raw'
-                ? 'bg-zinc-800 text-zinc-100 font-medium'
-                : 'text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            Raw
-          </button>
+          />
+
+          <div className="flex flex-col items-center justify-center gap-2">
+            <FileText className="h-7 w-7 text-gray-700 stroke-[1.75]" />
+            <span className="text-[13px] font-semibold text-gray-900">
+              Upload your resume
+            </span>
+            <p className="text-[11px] text-gray-400 -mt-1">
+              PDF or DOCX (max 10MB)
+            </p>
+
+            <button
+              type="button"
+              onClick={handleChooseFileClick}
+              disabled={isLoading}
+              className="mt-1 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[13px] font-medium transition-colors cursor-pointer shadow-sm"
+            >
+              <UploadCloud className="h-4 w-4" />
+              <span>Choose file</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      {error && (
-        <div className="mt-3 p-3 rounded-lg bg-red-950/30 border border-red-900/40 text-xs text-red-300 flex items-start justify-between gap-2">
-          <div className="flex items-start gap-2">
-            <AlertCircle className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
-            <span>{error}</span>
+      {/* Uploaded File Pill Card (Shown when resume is present or default sample) */}
+      {resumeText ? (
+        <div className="mt-4 flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-white shadow-xs">
+          <div className="flex items-center gap-3 min-w-0">
+            <FileText className="h-5 w-5 text-gray-600 shrink-0 stroke-[1.5]" />
+            <div className="min-w-0">
+              <p className="text-[13px] font-semibold text-gray-900 truncate">
+                {filename || 'alex-chen-ai-engineer.pdf'}
+              </p>
+              <p className="text-[11px] text-gray-500">
+                {(charCount || 3194).toLocaleString()} characters · {words} words
+              </p>
+            </div>
           </div>
-          <button onClick={() => setError(null)} className="text-red-400 hover:text-red-200">
-            <X className="h-3.5 w-3.5" />
+
+          <div className="flex items-center gap-2 shrink-0">
+            <CheckCircle2 className="h-4 w-4 text-emerald-600 fill-emerald-50" />
+            <button
+              type="button"
+              onClick={onClear}
+              className="text-gray-400 hover:text-gray-600 p-0.5 rounded transition-colors"
+              title="Remove file"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="mt-4 flex items-center justify-between p-3 rounded-lg border border-gray-100 bg-gray-50/50">
+          <span className="text-[12px] text-gray-400">No resume chosen yet</span>
+          <button
+            type="button"
+            onClick={() => onTextLoaded(SAMPLE_RESUME_TEXT, 'alex-chen-ai-engineer.pdf', SAMPLE_RESUME_TEXT.length)}
+            className="text-[12px] font-medium text-[#2563EB] hover:underline"
+          >
+            Load sample resume
           </button>
         </div>
       )}
-
-      {/* Mode Views */}
-      <div className="mt-4">
-        {activeTab === 'upload' && !resumeText && (
-          <div
-            onDragEnter={handleDrag}
-            onDragLeave={handleDrag}
-            onDragOver={handleDrag}
-            onDrop={handleDrop}
-            onClick={() => fileInputRef.current?.click()}
-            className={`border border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors ${
-              dragActive
-                ? 'border-zinc-400 bg-zinc-900/60'
-                : 'border-white/[0.12] hover:border-white/[0.24] bg-zinc-900/20 hover:bg-zinc-900/40'
-            }`}
-          >
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".pdf,.docx,.doc,.txt"
-              className="hidden"
-              onChange={(e) => {
-                if (e.target.files && e.target.files[0]) {
-                  handleFileUpload(e.target.files[0]);
-                }
-              }}
-            />
-            <Upload className="h-5 w-5 text-zinc-400 mx-auto mb-2" />
-            <p className="text-xs font-medium text-zinc-200">
-              Click to browse or drop PDF / DOCX
-            </p>
-            <p className="text-[11px] text-zinc-500 mt-1 font-mono">
-              Max 10MB • Text selectable files only
-            </p>
-          </div>
-        )}
-
-        {activeTab === 'raw' && (
-          <div className="space-y-2">
-            <textarea
-              value={rawInput}
-              onChange={(e) => setRawInput(e.target.value)}
-              placeholder="Paste candidate resume text or markdown here..."
-              rows={6}
-              className="w-full p-3 rounded-lg bg-zinc-900/80 border border-white/[0.08] text-xs text-zinc-200 font-mono placeholder-zinc-600 focus:outline-none focus:border-zinc-500 leading-relaxed resize-none"
-            />
-            <div className="flex justify-end">
-              <button
-                type="button"
-                onClick={handleRawSubmit}
-                className="px-3 py-1.5 rounded-md text-xs font-medium bg-zinc-100 text-zinc-900 hover:bg-white transition-colors"
-              >
-                Apply Text
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Loaded Document State */}
-        {resumeText && activeTab !== 'raw' && (
-          <div className="p-3.5 rounded-lg bg-zinc-900/40 border border-white/[0.08]">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="h-8 w-8 rounded bg-zinc-800 border border-white/[0.08] flex items-center justify-center text-zinc-300 shrink-0">
-                  <FileText className="h-4 w-4" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-medium text-zinc-200 truncate">{filename}</p>
-                  <p className="text-[11px] font-mono text-zinc-500 mt-0.5">
-                    {charCount.toLocaleString()} chars • ~{Math.round(charCount / 6)} words
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('raw')}
-                  className="p-1.5 rounded text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
-                  title="View / Edit Text"
-                >
-                  <Edit3 className="h-3.5 w-3.5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={onClear}
-                  className="p-1.5 rounded text-zinc-400 hover:text-red-400 hover:bg-zinc-800 transition-colors"
-                  title="Clear resume"
-                >
-                  <X className="h-3.5 w-3.5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
     </div>
   );
 };

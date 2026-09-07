@@ -1,5 +1,5 @@
-export const SAMPLE_RESUME_TEXT = `Alex Chen
-San Francisco, CA | alex.chen@example.com | github.com/alexchen | linkedin.com/in/alexchen-dev
+export const SAMPLE_RESUME_TEXT = `Akshat Apoorv
+San Francisco, CA | github.com/aksh120 | linkedin.com/in/akshat-apoorv
 
 SUMMARY
 Results-driven Full Stack & Generative AI Software Engineer with 3+ years of experience building production AI-powered web applications, scalable REST/GraphQL APIs, and high-performance microservices. Passionate about prompt engineering, LLM orchestration, vector similarity search, and responsive user experiences.

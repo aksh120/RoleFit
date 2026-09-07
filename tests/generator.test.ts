@@ -67,7 +67,7 @@ Certainly! { "match_explanation": "Great candidate fit.", "skill_gaps": ["None"]
   });
 
   it('generates valid fallback insights when LLM is unavailable', () => {
-    const fallback = generateFallbackInsights(sampleJob, 'Alex Chen resume');
+    const fallback = generateFallbackInsights(sampleJob, 'Akshat Apoorv resume');
     expect(fallback.match_explanation).toBeTruthy();
     expect(fallback.skill_gaps.length).toBeGreaterThanOrEqual(1);
     expect(fallback.resume_tips.length).toBeGreaterThanOrEqual(1);
