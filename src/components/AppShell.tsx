@@ -4,6 +4,8 @@ import React from 'react';
 import { Home, FileText, Search, Bookmark, Settings, Sun, Moon } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { UserProfileMenu } from './UserProfileMenu';
+import { RoleFitLogo } from './RoleFitLogo';
+import { Footer } from './Footer';
 
 export type NavTab = 'home' | 'resumes' | 'search' | 'saved' | 'settings' | 'how-it-works' | 'about';
 
@@ -36,13 +38,16 @@ export const AppShell: React.FC<AppShellProps> = ({
       <aside className="w-[212px] shrink-0 border-r border-gray-200 dark:border-slate-800/80 bg-white dark:bg-[#0C121E] flex flex-col justify-between h-screen sticky top-0 px-4 py-5 z-40 select-none transition-colors duration-150">
         <div>
           {/* Top Brand Logo */}
-          <div className="flex items-center gap-2 px-2 mb-6">
+          <div className="px-2 mb-6">
             <button
               type="button"
               onClick={() => onTabChange('home')}
-              className="text-[19px] font-bold tracking-tight text-gray-950 dark:text-white font-sans hover:opacity-85 transition-opacity"
+              className="flex items-center gap-2.5 text-left group cursor-pointer"
             >
-              RoleFit
+              <RoleFitLogo size={28} />
+              <span className="text-[19px] font-bold tracking-tight text-gray-950 dark:text-white font-sans group-hover:text-[#2563EB] dark:group-hover:text-blue-400 transition-colors">
+                RoleFit
+              </span>
             </button>
           </div>
 
@@ -143,6 +148,9 @@ export const AppShell: React.FC<AppShellProps> = ({
         <div className="flex-1 px-6 sm:px-10 py-7 max-w-[1240px] w-full mx-auto">
           {children}
         </div>
+
+        {/* Global Professional Footer */}
+        <Footer onTabChange={onTabChange} />
       </div>
     </div>
   );

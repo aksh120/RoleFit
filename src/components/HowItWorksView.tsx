@@ -63,7 +63,7 @@ export const HowItWorksView: React.FC<HowItWorksViewProps> = ({ onStartMatching 
       title: 'Cosine Similarity Scoring & Ranking',
       badge: 'Mathematical Ranking',
       description:
-        'The candidate resume vector is evaluated against every live job listing using vector cosine similarity. Roles are sorted in descending order of semantic proximity, producing intuitive percentage match scores (0–100%).',
+        'The candidate resume vector is evaluated against every live job listing using vector cosine similarity. Roles are sorted in descending order of semantic proximity, producing intuitive percentage match scores (0-100%).',
       points: [
         'Normalized dot product calculation over vector magnitudes',
         'Deterministic ranking unaffected by marketing fluff',

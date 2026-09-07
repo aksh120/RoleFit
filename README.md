@@ -1,4 +1,4 @@
-# RoleFit — AI Job Match & Resume Optimization Engine
+# RoleFit - AI Job Match & Resume Optimization Engine
 
 [![Next.js 15](https://img.shields.io/badge/Next.js-15.1-black?logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript)](https://www.typescriptlang.org/)
@@ -6,7 +6,7 @@
 [![Llama 3.3 70B](https://img.shields.io/badge/LLM-Llama_3.3_70B_via_Groq-f97316)](https://groq.com/)
 [![Vitest](https://img.shields.io/badge/Tests-Vitest_Passing-emerald)](https://vitest.dev/)
 
-> **Generative AI Developer Intern — Build Sprint Submission**  
+> **Generative AI Developer Intern - Build Sprint Submission**  
 > **Candidate:** Akshat Apoorv  
 > **Date:** September 7, 2026  
 

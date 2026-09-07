@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Terminal, Github, Circle } from 'lucide-react';
+import { Github, Circle } from 'lucide-react';
+import { RoleFitLogo } from './RoleFitLogo';
 
 interface HeaderProps {
   poolCount?: number;
@@ -14,9 +15,7 @@ export const Header: React.FC<HeaderProps> = ({ poolCount = 0 }) => {
         {/* Brand & Version */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-md bg-zinc-900 border border-white/[0.12] flex items-center justify-center text-zinc-300">
-              <Terminal className="h-3.5 w-3.5" />
-            </div>
+            <RoleFitLogo size={22} />
             <span className="text-sm font-semibold tracking-tight text-zinc-100">
               RoleFit
             </span>
