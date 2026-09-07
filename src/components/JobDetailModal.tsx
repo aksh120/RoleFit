@@ -3,6 +3,7 @@
 import React from 'react';
 import { X, ExternalLink, MapPin, Briefcase, Minus, ArrowLeft } from 'lucide-react';
 import type { EnrichedJob } from '@/lib/types';
+import CompanyLogo from './CompanyLogo';
 
 interface JobDetailModalProps {
   job: EnrichedJob | null;
@@ -37,23 +38,26 @@ export const JobDetailModal: React.FC<JobDetailModalProps> = ({ job, onClose }) 
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto space-y-6">
           {/* Job Overview */}
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-[#2563EB] dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-              {job.matchScore.toFixed(0)}% Match
-            </span>
-            <h2 className="text-xl font-bold text-gray-950 dark:text-white mt-2">{job.title}</h2>
-            <p className="text-sm font-medium text-gray-600 dark:text-slate-400 mt-0.5">{job.company}</p>
+          <div className="flex items-start gap-4">
+            <CompanyLogo company={job.company} size={48} />
+            <div className="flex-1 min-w-0">
+              <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-[#2563EB] dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
+                {job.matchScore.toFixed(0)}% Match
+              </span>
+              <h2 className="text-xl font-bold text-gray-950 dark:text-white mt-1.5">{job.title}</h2>
+              <p className="text-sm font-medium text-gray-600 dark:text-slate-400 mt-0.5">{job.company}</p>
 
-            <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-slate-400">
-              <span className="flex items-center gap-1">
-                <MapPin className="h-3.5 w-3.5" />
-                {job.location || 'Remote'}
-              </span>
-              <span className="flex items-center gap-1">
-                <Briefcase className="h-3.5 w-3.5" />
-                {job.remote ? 'Remote' : 'Full-time'}
-              </span>
-              <span>Source: {job.source}</span>
+              <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-slate-400">
+                <span className="flex items-center gap-1">
+                  <MapPin className="h-3.5 w-3.5" />
+                  {job.location || 'Remote'}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Briefcase className="h-3.5 w-3.5" />
+                  {job.remote ? 'Remote' : 'Full-time'}
+                </span>
+                <span>Source: {job.source}</span>
+              </div>
             </div>
           </div>
 

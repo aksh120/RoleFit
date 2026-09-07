@@ -14,6 +14,7 @@ import {
   Minus,
 } from 'lucide-react';
 import type { EnrichedJob } from '@/lib/types';
+import CompanyLogo from './CompanyLogo';
 
 interface JobCardProps {
   job: EnrichedJob;
@@ -43,45 +44,6 @@ export const JobCard: React.FC<JobCardProps> = ({
     }
   };
 
-  // Render company mark / logo
-  const renderCompanyLogo = (companyName: string) => {
-    const lower = companyName.toLowerCase();
-    if (lower.includes('microsoft')) {
-      return (
-        <div className="w-10 h-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800 flex items-center justify-center shrink-0 p-2">
-          <div className="grid grid-cols-2 gap-0.5 w-5 h-5">
-            <div className="bg-[#F25022] rounded-[1px]" />
-            <div className="bg-[#7FBA00] rounded-[1px]" />
-            <div className="bg-[#00A4EF] rounded-[1px]" />
-            <div className="bg-[#FFB900] rounded-[1px]" />
-          </div>
-        </div>
-      );
-    }
-    if (lower.includes('google')) {
-      return (
-        <div className="w-10 h-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800 flex items-center justify-center shrink-0">
-          <span className="text-base font-bold text-[#4285F4]">G</span>
-        </div>
-      );
-    }
-    if (lower.includes('amazon')) {
-      return (
-        <div className="w-10 h-10 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-slate-800 flex items-center justify-center shrink-0">
-          <span className="text-base font-bold text-[#FF9900]">a</span>
-        </div>
-      );
-    }
-
-    // Default company initial
-    const initial = (companyName || 'C').charAt(0).toUpperCase();
-    return (
-      <div className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 flex items-center justify-center shrink-0 text-sm font-bold text-gray-700 dark:text-slate-200">
-        {initial}
-      </div>
-    );
-  };
-
   const scoreNum = Math.round(job.matchScore);
   const explanation =
     job.insights?.match_explanation ||
@@ -98,7 +60,7 @@ export const JobCard: React.FC<JobCardProps> = ({
           </div>
 
           {/* Company Logo */}
-          {renderCompanyLogo(job.company)}
+          <CompanyLogo company={job.company} size={40} />
 
           {/* Details */}
           <div className="flex-1 min-w-0">
