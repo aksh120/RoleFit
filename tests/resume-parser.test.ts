@@ -25,10 +25,10 @@ describe('Resume Parser Suite', () => {
   });
 
   it('successfully extracts text from valid TXT buffer', async () => {
-    const validText = 'John Doe — Full Stack Engineer with over five years of experience building modern web apps.';
+    const validText = 'Rohan Sharma — Full Stack Engineer with over five years of experience building modern web apps.';
     const buffer = Buffer.from(validText);
     const result = await parseResume(buffer, 'resume.txt');
     expect(result.charCount).toBeGreaterThanOrEqual(50);
-    expect(result.text).toContain('John Doe');
+    expect(result.text).toContain('Rohan Sharma');
   });
 });

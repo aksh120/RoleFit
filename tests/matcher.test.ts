@@ -28,7 +28,7 @@ describe('Matcher & Vector Similarity Suite', () => {
       id: 'job-unrelated',
       title: 'Civil Construction Supervisor',
       company: 'BuildCo',
-      location: 'Denver, CO',
+      location: 'Jaipur, Rajasthan',
       tags: ['concrete', 'safety', 'construction'],
       description: 'Overseeing concrete pouring and physical bridge inspection on work sites.',
       url: 'https://example.com/civil',

@@ -129,7 +129,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onStartMatching }) => {
       <div className="p-6 rounded-xl border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-gray-950 dark:text-white">RoleFit v1.0</span>
+            <span className="text-sm font-bold text-gray-950 dark:text-white">RoleFit</span>
             <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-[#2563EB] dark:text-blue-300">
               Production Release
             </span>

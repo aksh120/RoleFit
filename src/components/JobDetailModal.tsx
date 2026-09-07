@@ -47,14 +47,17 @@ export const JobDetailModal: React.FC<JobDetailModalProps> = ({ job, onClose }) 
               <h2 className="text-xl font-bold text-gray-950 dark:text-white mt-1.5">{job.title}</h2>
               <p className="text-sm font-medium text-gray-600 dark:text-slate-400 mt-0.5">{job.company}</p>
 
-              <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-4 mt-2 text-xs text-gray-500 dark:text-slate-400">
                 <span className="flex items-center gap-1">
                   <MapPin className="h-3.5 w-3.5" />
-                  {job.location || 'Remote'}
+                  {job.location || 'Bengaluru, India'}
                 </span>
                 <span className="flex items-center gap-1">
                   <Briefcase className="h-3.5 w-3.5" />
                   {job.remote ? 'Remote' : 'Full-time'}
+                </span>
+                <span className="flex items-center gap-1 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200/60 dark:border-emerald-900/50">
+                  {job.salary || '₹28L - ₹42L'}
                 </span>
                 <span>Source: {job.source}</span>
               </div>

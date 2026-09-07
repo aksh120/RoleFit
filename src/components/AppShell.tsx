@@ -44,9 +44,6 @@ export const AppShell: React.FC<AppShellProps> = ({
             >
               RoleFit
             </button>
-            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-slate-700">
-              v1.0
-            </span>
           </div>
 
           {/* Navigation Links */}

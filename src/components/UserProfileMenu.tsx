@@ -22,7 +22,7 @@ const DEFAULT_PROFILE: UserProfileData = {
   name: 'Akshat Apoorv',
   role: 'Candidate',
   email: 'akshat.apoorv@example.com',
-  location: 'San Francisco, CA',
+  location: 'Bengaluru, Karnataka',
   seniority: 'Senior (5+ yrs)',
   bio: 'Full Stack & Generative AI engineer with focus on Next.js, vector search, and LLM systems.',
 };

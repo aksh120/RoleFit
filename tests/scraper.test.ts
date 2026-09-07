@@ -70,7 +70,7 @@ describe('Scraper & Normalization Suite', () => {
         id: 'job-2',
         title: 'senior python developer',
         company: 'ACME CORP',
-        location: 'Berlin',
+        location: 'Bengaluru',
         tags: ['python'],
         description: 'Role 2 duplicate',
         url: 'https://example.com/2',

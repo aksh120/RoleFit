@@ -73,7 +73,7 @@ export const JobSearchView: React.FC<JobSearchViewProps> = ({
               <MapPin className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-gray-400 dark:text-slate-500" />
               <input
                 type="text"
-                placeholder="e.g. Remote, Berlin"
+                placeholder="e.g. Remote, Bengaluru"
                 value={location}
                 onChange={(e) => onLocationChange(e.target.value)}
                 className="w-full pl-8 pr-2.5 py-2 text-xs rounded-lg border border-gray-200 dark:border-slate-700/80 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#2563EB] dark:focus:border-blue-500 transition-colors"

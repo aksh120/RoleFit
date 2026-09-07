@@ -8,6 +8,7 @@ export interface Job {
   url: string;
   source: 'RemoteOK' | 'Arbeitnow' | string;
   remote?: boolean;
+  salary?: string;
 }
 
 export interface AIInsights {

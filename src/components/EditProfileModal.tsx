@@ -168,7 +168,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                   type="text"
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                  placeholder="e.g. San Francisco, CA / Remote"
+                  placeholder="e.g. Bengaluru, India / Remote"
                   className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 focus:outline-none focus:border-[#2563EB] dark:focus:border-blue-500 transition-colors"
                 />
               </div>

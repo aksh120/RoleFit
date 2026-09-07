@@ -252,6 +252,126 @@ export const CompanyLogo: React.FC<CompanyLogoProps> = ({
     );
   }
 
+  // 16. Flipkart
+  if (comp.includes('flipkart')) {
+    return (
+      <div
+        className={`rounded-lg bg-[#2874F0] border border-blue-600 flex items-center justify-center shrink-0 p-1.5 select-none ${className}`}
+        style={{ width: size, height: size }}
+        title="Flipkart"
+      >
+        <span className="text-white font-extrabold italic text-sm tracking-tighter">
+          f<span className="text-[#FFE500] font-bold">🛒</span>
+        </span>
+      </div>
+    );
+  }
+
+  // 17. Zomato
+  if (comp.includes('zomato')) {
+    return (
+      <div
+        className={`rounded-lg bg-[#E23744] border border-rose-600 flex items-center justify-center shrink-0 p-1 select-none ${className}`}
+        style={{ width: size, height: size }}
+        title="Zomato"
+      >
+        <span className="text-white font-black italic text-xs tracking-tight">
+          zomato
+        </span>
+      </div>
+    );
+  }
+
+  // 18. Swiggy
+  if (comp.includes('swiggy')) {
+    return (
+      <div
+        className={`rounded-lg bg-[#FC8019] border border-orange-500 flex items-center justify-center shrink-0 p-1.5 select-none ${className}`}
+        style={{ width: size, height: size }}
+        title="Swiggy"
+      >
+        <span className="text-white font-black text-sm">
+          S
+        </span>
+      </div>
+    );
+  }
+
+  // 19. Razorpay
+  if (comp.includes('razorpay')) {
+    return (
+      <div
+        className={`rounded-lg bg-[#0C2340] border border-blue-900 flex items-center justify-center shrink-0 p-1.5 select-none ${className}`}
+        style={{ width: size, height: size }}
+        title="Razorpay"
+      >
+        <span className="text-[#3395FF] font-black text-xs tracking-tighter">
+          ⚡R
+        </span>
+      </div>
+    );
+  }
+
+  // 20. Jio
+  if (comp.includes('jio')) {
+    return (
+      <div
+        className={`rounded-lg bg-[#0066D6] border border-blue-600 flex items-center justify-center shrink-0 p-1.5 select-none ${className}`}
+        style={{ width: size, height: size }}
+        title="Jio"
+      >
+        <span className="text-white font-black text-xs tracking-wider">
+          Jio
+        </span>
+      </div>
+    );
+  }
+
+  // 21. TCS / Tata
+  if (comp.includes('tata') || comp.includes('tcs')) {
+    return (
+      <div
+        className={`rounded-lg bg-[#003B70] border border-blue-800 flex items-center justify-center shrink-0 p-1.5 select-none ${className}`}
+        style={{ width: size, height: size }}
+        title="TCS"
+      >
+        <span className="text-white font-bold text-xs tracking-wider">
+          TATA
+        </span>
+      </div>
+    );
+  }
+
+  // 22. Infosys
+  if (comp.includes('infosys')) {
+    return (
+      <div
+        className={`rounded-lg bg-[#007CC3] border border-blue-600 flex items-center justify-center shrink-0 p-1.5 select-none ${className}`}
+        style={{ width: size, height: size }}
+        title="Infosys"
+      >
+        <span className="text-white font-bold text-[11px] tracking-tight">
+          infy
+        </span>
+      </div>
+    );
+  }
+
+  // 23. Zerodha
+  if (comp.includes('zerodha')) {
+    return (
+      <div
+        className={`rounded-lg bg-[#387ED1] border border-blue-600 flex items-center justify-center shrink-0 p-1.5 select-none ${className}`}
+        style={{ width: size, height: size }}
+        title="Zerodha"
+      >
+        <span className="text-white font-black text-xs">
+          Kite
+        </span>
+      </div>
+    );
+  }
+
   // Default / Online live logo lookup fallback via Google Favicon CDN
   const cleanDomain = comp.replace(/[^a-z0-9]/g, '');
   const faviconUrl = `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${cleanDomain}.com&size=128`;

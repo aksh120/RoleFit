@@ -72,14 +72,17 @@ export const JobCard: React.FC<JobCardProps> = ({
             </p>
 
             {/* Metadata Row */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1.5 text-[12px] text-gray-500 dark:text-slate-400">
+            <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1 mt-1.5 text-[12px] text-gray-500 dark:text-slate-400">
               <span className="flex items-center gap-1">
                 <MapPin className="h-3.5 w-3.5 text-gray-400 dark:text-slate-500" />
-                {job.location || 'Remote'}
+                {job.location || 'Bengaluru, India'}
               </span>
               <span className="flex items-center gap-1">
                 <Briefcase className="h-3.5 w-3.5 text-gray-400 dark:text-slate-500" />
                 {job.remote ? 'Full-time / Remote' : 'Full-time'}
+              </span>
+              <span className="flex items-center gap-0.5 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200/60 dark:border-emerald-900/50 text-[11px]">
+                {job.salary || '₹28L - ₹42L'}
               </span>
               <span className="flex items-center gap-1">
                 <BarChart2 className="h-3.5 w-3.5 text-gray-400 dark:text-slate-500" />

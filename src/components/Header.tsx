@@ -21,9 +21,6 @@ export const Header: React.FC<HeaderProps> = ({ poolCount = 0 }) => {
               RoleFit
             </span>
           </div>
-          <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-white/[0.08]">
-            v1.0
-          </span>
           <span className="hidden sm:inline-block text-xs text-zinc-500 font-mono">
             /
           </span>

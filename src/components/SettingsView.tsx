@@ -103,7 +103,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           <div className="flex items-center justify-between p-3 rounded-lg border border-gray-100 dark:border-slate-800">
             <div>
               <p className="text-xs font-semibold text-gray-900 dark:text-slate-100">Arbeitnow</p>
-              <p className="text-[11px] text-gray-500 dark:text-slate-400">Global and European tech job postings</p>
+              <p className="text-[11px] text-gray-500 dark:text-slate-400">Global and Indian tech job postings</p>
             </div>
             <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">
               Connected
